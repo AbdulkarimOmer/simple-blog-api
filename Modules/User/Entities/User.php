@@ -1,18 +1,20 @@
 <?php
 
-namespace App\Models;
+namespace Modules\User\Entities;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Modules\User\Database\factories\UserFactory;
+use Snowflake\SnowflakeCast;
 use Snowflake\Snowflakes;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable,Snowflakes,SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable, Snowflakes, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -44,4 +46,12 @@ class User extends Authenticatable
         'id' => SnowflakeCast::class,
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Create a new factory instance for the model.
+     */
+    protected static function newFactory(): UserFactory
+    {
+        return UserFactory::new();
+    }
 }
