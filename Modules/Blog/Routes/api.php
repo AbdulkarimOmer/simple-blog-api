@@ -1,5 +1,6 @@
 <?php
 
+use Modules\Blog\Http\Controllers\API\Posts\ShowPostController;
 use Modules\Blog\Http\Controllers\API\Posts\StorePostController;
 
 /*
@@ -16,6 +17,11 @@ use Modules\Blog\Http\Controllers\API\Posts\StorePostController;
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::name('blog.')->prefix('blog')->group(function () {
         Route::name('posts.')->prefix('posts')->group(function () {
+            Route::get(
+                '/{id}',
+                ShowPostController::class
+            )->name('show');
+
             Route::post(
                 '/',
                 StorePostController::class
