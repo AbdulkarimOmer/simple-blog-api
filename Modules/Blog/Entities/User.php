@@ -1,9 +1,10 @@
 <?php
 
-namespace Modules\User\Entities;
+namespace Modules\Post\Entities;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Snowflake\SnowflakeCast;
 use Snowflake\Snowflakes;
 
@@ -30,4 +31,13 @@ class User extends Model
         'id' => SnowflakeCast::class,
         'email_verified_at' => 'datetime',
     ];
+
+
+    /**
+     * @return HasMany
+     */
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
 }

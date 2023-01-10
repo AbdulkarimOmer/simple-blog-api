@@ -4,7 +4,9 @@ namespace Modules\Blog\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Blog\Database\factories\PostFactory;
+use Modules\Post\Entities\User;
 
 class Post extends Model
 {
@@ -28,6 +30,16 @@ class Post extends Model
     protected $casts = [
         'id' => SnowflakeCast::class,
     ];
+
+
+
+    /**
+     * @return belongsToMany
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     protected static function newFactory()
     {
