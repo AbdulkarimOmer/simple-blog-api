@@ -2,8 +2,11 @@
 
 declare(strict_types=1);
 
+namespace app\Helpers;
+
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\JsonResponse;
+use JsonSerializable;
 
 abstract class ApiResponse
 {

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
+use Modules\User\Http\Controllers\Authentication\LoginController;
+use Modules\User\Http\Controllers\Authentication\LogoutController;
+use Modules\User\Http\Controllers\Authentication\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,21 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::name('accounts.')->prefix('accounts')->group(function () {
+    Route::post(
+        '/sign-up',
+        RegisterController::class
+    )->name('sign-up');
+
+    Route::post(
+        '/login',
+        LoginController::class
+    )->name('login');
+
+    Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+        Route::get(
+            '/logout',
+            LogoutController::class
+        )->name('logout');
+    });
 });

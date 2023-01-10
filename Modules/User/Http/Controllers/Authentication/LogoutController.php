@@ -2,7 +2,7 @@
 
 namespace Modules\User\Http\Controllers\Authentication;
 
-use ApiResponse;
+use app\Helpers\ApiResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

@@ -2,7 +2,7 @@
 
 namespace Modules\User\Http\Controllers\Authentication;
 
-use ApiResponse;
+use app\Helpers\ApiResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Modules\User\Actions\Authentication\CreateUserAuthenticationTokenAction;
@@ -35,7 +35,6 @@ class LoginController extends Controller
             }
 
             $user = (new CreateUserAuthenticationTokenAction())($user);
-
 
             return ApiResponse::sendSuccessResponse(
                 __('auth.success_login'),

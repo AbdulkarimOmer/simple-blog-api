@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\User\DataTransferObjects.php\DataTransferObjects;
+namespace Modules\User\DataTransferObjects;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;

@@ -2,7 +2,7 @@
 
 namespace Modules\User\Http\Controllers\Authentication;
 
-use ApiResponse;
+use app\Helpers\ApiResponse;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
@@ -31,7 +31,7 @@ class RegisterController extends Controller
 
             $user = User::query()->create($userData->toArray())->fresh();
 
-            (new SendUserEmailVerificationAction)($user);
+            // (new SendUserEmailVerificationAction)($user);
 
             $user = (new CreateUserAuthenticationTokenAction())($user);
 
@@ -42,7 +42,7 @@ class RegisterController extends Controller
         }
 
         return ApiResponse::sendSuccessResponse(
-            __('emails.app_thanks_signup'),
+            __('auth.thanks_signup'),
             AuthenticationResource::make($user)
         );
     }
