@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Resources\App\SocialNetwork\Posts;
+namespace Modules\Blog\Http\Resources\Posts;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Storage;
 use JsonSerializable;
-use Modules\Blog\Http\Users\UserResource;
+use Modules\Blog\Http\Resources\Users\UserResource;
 
 class PostResource extends JsonResource
 {
@@ -24,7 +23,7 @@ class PostResource extends JsonResource
             'title' => $this->title,
             'content' => $this->content,
             'created_at' => $this->created_at,
-            'user' => UserResource::make($this->client),
+            'user' => UserResource::make($this->user),
         ];
     }
 }

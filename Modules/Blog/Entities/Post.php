@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Blog\Database\factories\PostFactory;
-use Modules\Post\Entities\User;
+use Snowflake\SnowflakeCast;
+use Snowflake\Snowflakes;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Snowflakes;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +21,7 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
+        'user_id',
     ];
 
     /**
@@ -30,8 +32,6 @@ class Post extends Model
     protected $casts = [
         'id' => SnowflakeCast::class,
     ];
-
-
 
     /**
      * @return belongsToMany

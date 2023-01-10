@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use Modules\Blog\Http\Controllers\API\Posts\StorePostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->get('/blog', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::name('blog.')->prefix('blog')->group(function () {
+        Route::name('posts.')->prefix('posts')->group(function () {
+            Route::post(
+                '/',
+                StorePostController::class
+            )->name('store');
+        });
+    });
+});

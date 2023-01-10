@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Post\Entities;
+namespace Modules\Blog\Entities;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

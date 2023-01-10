@@ -1,15 +1,16 @@
 <?php
 
-namespace Modules\Blog\Http\Controllers\Posts;
+namespace Modules\Blog\Http\Controllers\API\Posts;
 
 use app\Helpers\ApiResponse;
-use App\Http\Resources\App\SocialNetwork\Posts\PostResource;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Modules\Blog\Http\Requests\Post\StorePostRequest;
-use Modules\Post\DataTransferObjects\PostData;
+use Modules\Blog\DataTransferObjects\PostData;
+use Modules\Blog\Entities\User;
+use Modules\Blog\Http\Requests\Posts\StorePostRequest;
+use Modules\Blog\Http\Resources\Posts\PostResource;
 
 class StorePostController extends Controller
 {
@@ -21,7 +22,7 @@ class StorePostController extends Controller
      */
     public function __invoke(StorePostRequest $request)
     {
-        $user = Auth::user();
+        $user = User::find(Auth::user()->id);
 
         $postData = PostData::fromRequest($request);
 

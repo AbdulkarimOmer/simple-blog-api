@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Blog\Http\Users;
+namespace Modules\Blog\Http\Resources\Users;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;

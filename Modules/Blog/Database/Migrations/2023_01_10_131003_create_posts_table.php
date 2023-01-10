@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('title',100);
             $table->string('content',2000);
 
+            $table->foreignSnowflake('user_id')->index()->constrained()->nullOnDelete();
+
             $table->timestamps();
         });
     }

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Modules\User\Http\Controllers\Authentication\LoginController;
 use Modules\User\Http\Controllers\Authentication\LogoutController;
 use Modules\User\Http\Controllers\Authentication\RegisterController;

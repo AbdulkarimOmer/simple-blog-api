@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Post\DataTransferObjects;
+namespace Modules\Blog\DataTransferObjects;
 
 use Illuminate\Http\Request;
 use Spatie\LaravelData\Data;
