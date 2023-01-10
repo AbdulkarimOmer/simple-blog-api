@@ -3,6 +3,7 @@
 use Modules\Blog\Http\Controllers\API\Posts\IndexPostController;
 use Modules\Blog\Http\Controllers\API\Posts\ShowPostController;
 use Modules\Blog\Http\Controllers\API\Posts\StorePostController;
+use Modules\Blog\Http\Controllers\API\Posts\UpdatePostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,15 +34,15 @@ Route::middleware(['auth:sanctum'])->group(function () {
                 StorePostController::class
             )->name('store');
 
-            // Route::post(
-            //     '/',
-            //     UpdatePostController::class
-            // )->name('update');
+            Route::patch(
+                '/{id}',
+                UpdatePostController::class
+            )->name('update');
 
-            // Route::post(
-            //     '/',
-            //     DestroyPostController::class
-            // )->name('destroy');
+            Route::post(
+                '/',
+                DestroyPostController::class
+            )->name('destroy');
         });
     });
 });
