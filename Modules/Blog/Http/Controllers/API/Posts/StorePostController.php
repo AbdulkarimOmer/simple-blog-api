@@ -5,7 +5,6 @@ namespace Modules\Blog\Http\Controllers\API\Posts;
 use app\Helpers\ApiResponse;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Modules\Blog\DataTransferObjects\PostData;
 use Modules\Blog\Entities\User;
@@ -17,7 +16,7 @@ class StorePostController extends Controller
     /**
      * Handle the incoming request.
      *
-     * @param Request $request
+     * @param StorePostRequest $request
      * @return JsonResponse
      */
     public function __invoke(StorePostRequest $request)
