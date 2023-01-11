@@ -1,5 +1,6 @@
 <?php
 
+use Modules\Blog\Http\Controllers\API\Posts\DestroyPostController;
 use Modules\Blog\Http\Controllers\API\Posts\IndexPostController;
 use Modules\Blog\Http\Controllers\API\Posts\ShowPostController;
 use Modules\Blog\Http\Controllers\API\Posts\StorePostController;
@@ -16,7 +17,7 @@ use Modules\Blog\Http\Controllers\API\Posts\UpdatePostController;
 |
 */
 
-Route::middleware(['auth:sanctum'])->group(function () {
+Route::middleware(['auth:sanctum'])->whereNumber(['id'])->group(function () {
     Route::name('blog.')->prefix('blog')->group(function () {
         Route::name('posts.')->prefix('posts')->group(function () {
             Route::get(
@@ -39,8 +40,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
                 UpdatePostController::class
             )->name('update');
 
-            Route::post(
-                '/',
+            Route::delete(
+                '/{id}',
                 DestroyPostController::class
             )->name('destroy');
         });
